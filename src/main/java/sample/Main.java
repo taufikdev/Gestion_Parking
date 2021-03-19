@@ -1,4 +1,4 @@
-package sample;
+package main.java.sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,29 +7,29 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 public class Main extends Application {
-
+    Stage primaryStage;
     @Override
     public void start(Stage primaryStage) throws Exception{
-
+        this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-
-
-        primaryStage.setTitle("Login to the system");
+        this.primaryStage.setTitle("Login to the system");
 //      primaryStage.initStyle(StageStyle.UNDECORATED);
-        Scene seScene = new Scene(root, 500, 375);
+        Scene seScene = new Scene(root, 500, 400);
         seScene.setFill(Color.TRANSPARENT);
-        primaryStage.setScene(seScene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.show();
-    }
+        this.primaryStage.setScene(seScene);
+        this.primaryStage.initStyle(StageStyle.TRANSPARENT);
+        this.primaryStage.show();
 
+    }
     public static void main(String[] args) {
         launch(args);
+    }
+    public void changeScene(String fxml) throws Exception {
+        Parent pane = FXMLLoader.load(
+                getClass().getResource(fxml));
+
+        this.primaryStage.getScene().setRoot(pane);
     }
 }
